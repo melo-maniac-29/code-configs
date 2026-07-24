@@ -1,0 +1,21 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "9router/moonshot/kimi-k2.7-code",
+  "small_model": "9router/moonshot/kimi-k2.5",
+  "enabled_providers": ["9router"],
+  "provider": {
+    "9router": {
+      "options": {
+        "apiKey": "PASTE_YOUR_9ROUTER_API_KEY_HERE",
+        "baseURL": "http://localhost:20128/v1"
+      }
+    }
+  },
+  "mcp": {
+    "codegraph": {
+      "type": "local",
+      "command": ["codegraph", "serve", "--mcp"],
+      "enabled": true
+    }
+  }
+}
