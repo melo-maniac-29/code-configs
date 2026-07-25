@@ -103,9 +103,9 @@ echo [4/5] Setting 9router to auto-start on boot...
 :: Find the actual 9router.cmd path from npm
 for /f "tokens=*" %%i in ('where 9router 2^>nul') do set "NINE_PATH=%%i"
 if defined NINE_PATH (
-    schtasks /CREATE /SC ONLOGON /TN "9router" /TR "!NINE_PATH!" /DELAY 0005:00 /F >nul 2>&1
+    schtasks /CREATE /SC ONLOGON /TN "9router" /TR "!NINE_PATH! -t --host 127.0.0.1" /DELAY 0005:00 /F >nul 2>&1
 ) else (
-    schtasks /CREATE /SC ONLOGON /TN "9router" /TR "%APPDATA%\npm\9router.cmd" /DELAY 0005:00 /F >nul 2>&1
+    schtasks /CREATE /SC ONLOGON /TN "9router" /TR "%APPDATA%\npm\9router.cmd -t --host 127.0.0.1" /DELAY 0005:00 /F >nul 2>&1
 )
 if errorlevel 1 (
     echo        WARNING: Could not create scheduled task. Run as Administrator for auto-start.

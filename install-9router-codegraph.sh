@@ -101,7 +101,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-ExecStart=${NINE_BIN}
+ExecStart=${NINE_BIN} -t --host 127.0.0.1
 Restart=on-failure
 RestartSec=5
 Environment=PATH=${NPM_PREFIX}/bin:/usr/bin:/bin
