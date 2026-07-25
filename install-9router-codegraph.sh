@@ -81,7 +81,7 @@ npm install -g @colbymchenry/codegraph
 echo "        CodeGraph installed."
 echo ""
 echo "        Wiring CodeGraph MCP into OpenCode..."
-codegraph install --yes
+"$(npm config get prefix)/bin/codegraph" install --yes
 
 # --- 4. Set 9router to start on boot ----------------------------------------
 echo ""

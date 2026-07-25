@@ -86,7 +86,15 @@ if errorlevel 1 (
 echo        CodeGraph installed.
 echo.
 echo        Wiring CodeGraph MCP into OpenCode...
-codegraph install --yes
+for /f "tokens=*" %%i in ('npm config get prefix') do set "NPM_PREFIX=%%i"
+if exist "!NPM_PREFIX!\codegraph.cmd" (
+    "!NPM_PREFIX!\codegraph.cmd" install --yes
+) else if exist "!NPM_PREFIX!\codegraph" (
+    "!NPM_PREFIX!\codegraph" install --yes
+) else (
+    echo        WARNING: codegraph binary not found in npm prefix (!NPM_PREFIX!).
+    echo        Try running: npm install -g @colbymchenry/codegraph
+)
 
 :: --- 4. Set 9router to start on boot ----------------------------------------
 echo.
